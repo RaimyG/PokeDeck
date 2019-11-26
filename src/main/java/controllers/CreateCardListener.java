@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Card;
+import models.Cards;
 import views.CreateCardForm;
 import views.Frame;
 import views.Menu;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class CreateCardListener implements ActionListener {
     private Frame frame;
-    private Card card;
+    private Cards card;
     private CreateCardForm createCardForm;
 
     public CreateCardListener(Frame frame, CreateCardForm createCardForm) {
@@ -32,7 +32,7 @@ public class CreateCardListener implements ActionListener {
         // Write new card in file
         else if ("create".equals(actionCommand)) {
             Map<String, String> fields = createCardForm.getFields();
-            Card card = new Card();
+            Cards card = new Cards();
             card.create(fields);
 
             // Reset fields

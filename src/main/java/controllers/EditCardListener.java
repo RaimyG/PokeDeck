@@ -1,30 +1,26 @@
 package controllers;
 
 import views.AllCards;
-import views.CreateCardForm;
 import views.Frame;
+import views.Menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuListener implements ActionListener {
+public class EditCardListener implements ActionListener {
 
     private Frame frame;
 
-    public MenuListener(Frame frame) {
+    public EditCardListener(Frame frame) {
         this.frame = frame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
-        if ("exit".equals(actionCommand)) {
-            System.exit(0);
-        } else if ("create".equals(actionCommand)) {
-            frame.getContentPane().removeAll();
-            frame.setContentPane(new CreateCardForm(frame));
-            frame.revalidate();
-        } else if ("show".equals(actionCommand)) {
+
+        // Back to menu
+        if ("back".equals(actionCommand)) {
             frame.getContentPane().removeAll();
             frame.setContentPane(new AllCards(frame));
             frame.revalidate();
