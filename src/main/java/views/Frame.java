@@ -11,7 +11,9 @@ public class Frame extends JFrame {
         setSize(600, 600);
         setLocationRelativeTo(null);
 
-        menu = new Menu();
-        add(menu);
+        menu = new Menu(this);
+
+        setContentPane(menu);
+        //add(menu);
     }
 }
