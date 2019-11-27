@@ -1,8 +1,0 @@
-models/Cards.class
-controllers/MenuListener.class
-Start.class
-views/Menu.class
-views/AllCards.class
-views/Frame.class
-controllers/CreateCardListener.class
-views/CreateCardForm.class

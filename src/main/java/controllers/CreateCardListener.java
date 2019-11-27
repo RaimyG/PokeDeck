@@ -1,17 +1,18 @@
 package controllers;
 
-import models.Cards;
+import models.Attack;
+import models.PokemonCard;
 import views.CreateCardForm;
 import views.Frame;
 import views.Menu;
 
+import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
 public class CreateCardListener implements ActionListener {
     private Frame frame;
-    private Cards card;
     private CreateCardForm createCardForm;
 
     public CreateCardListener(Frame frame, CreateCardForm createCardForm) {
@@ -29,14 +30,20 @@ public class CreateCardListener implements ActionListener {
             frame.setContentPane(new Menu(frame));
             frame.revalidate();
         }
-        // Write new card in file
+        
+        // Add new card in cards
         else if ("create".equals(actionCommand)) {
             Map<String, String> fields = createCardForm.getFields();
-            Cards card = new Cards();
-            card.create(fields);
-
-            // Reset fields
-            createCardForm.resetFields();
+            try {
+                String name = fields.get("name");
+                int hp = Integer.parseInt(fields.get("hp"));
+                Attack attack1 = new Attack(fields.get("firstAttack"), Integer.parseInt(fields.get("firstAttackDamage")));
+                Attack attack2 = new Attack(fields.get("secondAttack"), Integer.parseInt(fields.get("secondAttackDamage")));
+                new PokemonCard(name, hp, new Attack[]{attack1, attack2});
+                createCardForm.resetFields();
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Oops, il ya un problème");
+            }
         }
     }
 }

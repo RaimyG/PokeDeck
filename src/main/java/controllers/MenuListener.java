@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Card;
 import views.AllCards;
 import views.CreateCardForm;
 import views.Frame;
@@ -19,6 +20,7 @@ public class MenuListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
         if ("exit".equals(actionCommand)) {
+            Card.saveCards();
             System.exit(0);
         } else if ("create".equals(actionCommand)) {
             frame.getContentPane().removeAll();

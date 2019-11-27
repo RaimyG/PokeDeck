@@ -1,24 +1,23 @@
 package controllers;
 
-import models.Cards;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import views.Card;
-import views.CardEditForm;
+import views.EditCardForm;
 import views.Frame;
 import views.Menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 
 public class AllCardsListener implements ActionListener {
 
     private Frame frame;
-    JSONObject card;
+    private Card card;
 
-    public AllCardsListener(Frame frame, JSONObject card) {
+    public AllCardsListener(Frame frame) {
         this.frame = frame;
+    }
+
+    public AllCardsListener(Card card) {
         this.card = card;
     }
 
@@ -33,7 +32,7 @@ public class AllCardsListener implements ActionListener {
             frame.revalidate();
         } else {
             frame.getContentPane().removeAll();
-            frame.setContentPane(new CardEditForm(frame, card));
+            frame.setContentPane(new EditCardForm(frame, card));
             frame.revalidate();
         }
     }

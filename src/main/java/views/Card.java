@@ -2,16 +2,14 @@ package views;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Dimension;
 
 public class Card extends JButton {
 
-    public Card(String name) {
-        super(name);
-        setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-        setBackground(Color.WHITE);
+    public Card(models.Card card) {
+        super(card.getName());
+        setBorder(BorderFactory.createLineBorder(Color.RED, 2,true));
         setOpaque(true);
     }
 }

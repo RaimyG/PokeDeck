@@ -1,8 +1,8 @@
 package controllers;
 
 import views.AllCards;
+import views.EditCardForm;
 import views.Frame;
-import views.Menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,9 +10,11 @@ import java.awt.event.ActionListener;
 public class EditCardListener implements ActionListener {
 
     private Frame frame;
+    private EditCardForm editCardForm;
 
-    public EditCardListener(Frame frame) {
+    public EditCardListener(Frame frame, EditCardForm editCardForm) {
         this.frame = frame;
+        this.editCardForm = editCardForm;
     }
 
     @Override
@@ -24,6 +26,8 @@ public class EditCardListener implements ActionListener {
             frame.getContentPane().removeAll();
             frame.setContentPane(new AllCards(frame));
             frame.revalidate();
+        } else if ("save".equals(actionCommand)) {
+            System.out.println("Carte sauvegardée (non, j'ai menti)");
         }
     }
 }
