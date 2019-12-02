@@ -21,7 +21,7 @@ public class Frame extends JFrame {
                         "Êtes-vous sûr de vouloir quitter ?", "Fermeture",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                    Card.saveCards();
+                    Card.saveDeck();
                     System.exit(0);
                 }
             }

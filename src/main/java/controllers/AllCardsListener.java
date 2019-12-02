@@ -1,7 +1,8 @@
 package controllers;
 
-import views.Card;
-import views.EditCardForm;
+import models.Card;
+import models.PokemonCard;
+import views.EditPokemonCardForm;
 import views.Frame;
 import views.Menu;
 
@@ -13,13 +14,15 @@ public class AllCardsListener implements ActionListener {
     private Frame frame;
     private Card card;
 
+    public AllCardsListener(Frame frame, models.Card card) {
+        this.frame = frame;
+        this.card = card;
+    }
+
     public AllCardsListener(Frame frame) {
         this.frame = frame;
     }
 
-    public AllCardsListener(Card card) {
-        this.card = card;
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -32,7 +35,7 @@ public class AllCardsListener implements ActionListener {
             frame.revalidate();
         } else {
             frame.getContentPane().removeAll();
-            frame.setContentPane(new EditCardForm(frame, card));
+            frame.setContentPane(new EditPokemonCardForm(frame,(PokemonCard) card));
             frame.revalidate();
         }
     }

@@ -20,7 +20,7 @@ public class MenuListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
         if ("exit".equals(actionCommand)) {
-            Card.saveCards();
+            Card.saveDeck();
             System.exit(0);
         } else if ("create".equals(actionCommand)) {
             frame.getContentPane().removeAll();

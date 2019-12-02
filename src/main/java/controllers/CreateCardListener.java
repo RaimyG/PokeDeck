@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Attack;
+import models.Card;
 import models.PokemonCard;
 import views.CreateCardForm;
 import views.Frame;
@@ -35,14 +36,15 @@ public class CreateCardListener implements ActionListener {
         else if ("create".equals(actionCommand)) {
             Map<String, String> fields = createCardForm.getFields();
             try {
+                int id = Integer.parseInt(fields.get("id"));
                 String name = fields.get("name");
                 int hp = Integer.parseInt(fields.get("hp"));
                 Attack attack1 = new Attack(fields.get("firstAttack"), Integer.parseInt(fields.get("firstAttackDamage")));
                 Attack attack2 = new Attack(fields.get("secondAttack"), Integer.parseInt(fields.get("secondAttackDamage")));
-                new PokemonCard(name, hp, new Attack[]{attack1, attack2});
+                new PokemonCard(id, name, hp, new Attack[]{attack1, attack2});
                 createCardForm.resetFields();
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Oops, il ya un problème");
+                JOptionPane.showMessageDialog(null, "Erreur : " + ex.getMessage());
             }
         }
     }

@@ -11,13 +11,17 @@ import java.util.ArrayList;
 public class AllCards extends JPanel {
 
     public AllCards(Frame frame) {
-        setLayout(new GridLayout(3, 3));
+        GridLayout layout = new GridLayout(3, 9);
+        layout.setHgap(30);
+        layout.setVgap(30);
+        setLayout(layout);
 
-        ArrayList<models.Card> cards = Card.getCards();
+        ArrayList<models.Card> deck = Card.getDeck();
 
-        for (Card card : cards) {
-            System.out.println(card);
-            add(new views.Card(card));
+        for (Card card : deck) {
+            views.Card c = new views.Card(card);
+            c.addActionListener(new AllCardsListener(frame, card));
+            add(c);
         }
 
         AllCardsListener allCardsListener = new AllCardsListener(frame);
