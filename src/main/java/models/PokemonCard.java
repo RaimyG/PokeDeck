@@ -2,19 +2,22 @@ package models;
 
 public class PokemonCard extends Card {
     private int hp;
+    private String typePokemon;
     private Attack[] attacks = new Attack[2];
 
     /**
-     * Create new Pokemon Card
+     * Create new pokemon card
      *
-     * @param id      card's id
-     * @param name    pokemon's name
-     * @param hp      pokemon's Health points
-     * @param attacks Array of pokemon's attacks
+     * @param id card id
+     * @param name pokemon name
+     * @param hp health points
+     * @param typePokemon pokemon type
+     * @param attacks pokemon attacks
      */
-    public PokemonCard(int id, String name, int hp, Attack[] attacks) {
+    public PokemonCard(int id, String name, int hp, String typePokemon, Attack[] attacks) {
         super(id, "pokemon", name);
         this.hp = hp;
+        this.typePokemon = typePokemon;
         this.attacks = attacks;
         deck.add(this);
     }
@@ -25,6 +28,14 @@ public class PokemonCard extends Card {
 
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    public String getTypePokemon() {
+        return typePokemon;
+    }
+
+    public void setTypePokemon(String typePokemon) {
+        this.typePokemon = typePokemon;
     }
 
     public Attack[] getAttacks() {

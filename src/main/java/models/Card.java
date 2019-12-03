@@ -84,6 +84,7 @@ public class Card {
                         int id = json.get("id").getAsInt();
                         String name = json.get("name").getAsString();
                         int hp = json.get("hp").getAsInt();
+                        String typePokemon = json.get("typePokemon").getAsString();
 
                         // Prepare first attack data
                         JsonElement attack1json = json.get("attacks").getAsJsonArray().get(0);
@@ -97,7 +98,7 @@ public class Card {
                         int attack2dmg = attack2json.getAsJsonObject().get("damage").getAsInt();
                         Attack attack2 = new Attack(attack2name, attack2dmg);
 
-                        new PokemonCard(id, name, hp, new Attack[]{attack1, attack2});
+                        new PokemonCard(id, name, hp, typePokemon, new Attack[]{attack1, attack2});
 
                     } else {
                         System.out.println("Not pokemon card");

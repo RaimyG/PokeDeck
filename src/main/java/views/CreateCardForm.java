@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.util.HashMap;
@@ -47,9 +48,11 @@ public class CreateCardForm extends JPanel {
 
         // (Type)
         JLabel typeLabel = new JLabel("Type du pokémon");
+        JScrollPane scrollPane = new JScrollPane();
         typeList = new JList(Card.getTypes());
+        scrollPane.setViewportView(typeList);
         add(typeLabel);
-        add(typeList);
+        add(scrollPane);
 
         // (First attack name)
         JLabel firstAttackLabel = new JLabel("Première attaque");
@@ -97,6 +100,7 @@ public class CreateCardForm extends JPanel {
         fields.put("id", numField.getText());
         fields.put("name", nameField.getText());
         fields.put("hp", hpField.getText());
+        fields.put("typePokemon", typeList.getSelectedValue().toString());
         fields.put("firstAttack", firstAttackField.getText());
         fields.put("firstAttackDamage", firstAttackDamageField.getText());
         fields.put("secondAttack", secondAttackField.getText());
@@ -108,6 +112,7 @@ public class CreateCardForm extends JPanel {
         numField.setText("");
         nameField.setText("");
         hpField.setText("");
+        typeList.setSelectedIndex(0);
         firstAttackField.setText("");
         firstAttackDamageField.setText("");
         secondAttackField.setText("");

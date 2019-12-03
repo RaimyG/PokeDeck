@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Card;
 import models.PokemonCard;
 import views.AllCards;
 import views.EditPokemonCardForm;
@@ -37,6 +38,7 @@ public class EditPokemonCardListener implements ActionListener {
                 card.setId(Integer.parseInt(fields.get("id")));
                 card.setName(fields.get("name"));
                 card.setHp(Integer.parseInt(fields.get("hp")));
+                card.setTypePokemon(fields.get("typePokemon"));
                 card.getAttacks()[0].setName(fields.get("firstAttack"));
                 card.getAttacks()[0].setDamage(Integer.parseInt(fields.get("firstAttackDamage")));
                 card.getAttacks()[1].setName(fields.get("secondAttack"));
@@ -47,6 +49,11 @@ public class EditPokemonCardListener implements ActionListener {
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Oops, il ya un problème");
             }
+        } else if ("delete".equals(actionCommand)) {
+            Card.getDeck().remove(card);
+            frame.getContentPane().removeAll();
+            frame.setContentPane(new AllCards(frame));
+            frame.revalidate();
         }
     }
 }
