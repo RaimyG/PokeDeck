@@ -101,6 +101,7 @@ public class EditPokemonCardForm extends JPanel {
         JButton menuBtn = new JButton("Retour");
         menuBtn.setActionCommand("back");
         menuBtn.addActionListener(editPokemonCardListener);
+        add(menuBtn);
 
     }
 

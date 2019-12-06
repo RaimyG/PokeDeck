@@ -19,6 +19,9 @@
 *.tar.gz
 *.rar
 
+# Kotlin modules
+*.kotlin_module
+
 # Autres
 *.iml
 *.iws
